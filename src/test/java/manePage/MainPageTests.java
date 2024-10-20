@@ -17,7 +17,6 @@ public class MainPageTests {
     @BeforeAll
     public static void init() {
         WebDriverManager.chromedriver().setup();
-
     }
 
     @BeforeEach
@@ -33,17 +32,6 @@ public class MainPageTests {
         }
     }
 
-    @Test
-    public void ComparePassword() {
-        MainPage mainPage = new MainPage(driver);
-        mainPage.open();
-        mainPage.fillName();
-        mainPage.fillEmail();
-        mainPage.fillPassword();
-        mainPage.fillConfirmPassword();
-        mainPage.passShouldBeSame();
-    }
-
      @Test
      public void OutPutTest() {
         MainPage mainPage = new MainPage(driver);
@@ -52,6 +40,7 @@ public class MainPageTests {
         mainPage.fillEmail();
         mainPage.fillPassword();
         mainPage.fillConfirmPassword();
+        mainPage.passShouldBeSame();
         mainPage.fillBirthDate();
         mainPage.fillLanguageLevel();
         mainPage.registrationButtonClick();

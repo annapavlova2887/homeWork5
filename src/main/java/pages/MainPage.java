@@ -55,12 +55,13 @@ public class MainPage extends AbsBasePage{
         fillField(birthDate, dataForBirth);
     }
 
-
     public void fillLanguageLevel() {
         WebElement chooseLanguage = getElement(By.xpath(locatorOfChooseLanguage));
         WebElement languageLevel = getElement(By.id(locatorOfLanguageLevel));
         dropdownSelect(chooseLanguage, languageLevel, dateForLanguageLev);
     }
+
+
 
     public void passShouldBeSame() {
         WebElement password = getElement(By.id(locatorOfPassword));
