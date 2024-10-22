@@ -12,7 +12,7 @@ public abstract class AbsCommon {
 
     protected WebDriver driver;
     protected WebDriverWait webDriverWait;
-    protected Logger logger = LogManager.getLogger(AbsCommon.class);
+    protected static final Logger logger = LogManager.getLogger(AbsCommon.class);
 
     public AbsCommon(WebDriver driver) {
         this.driver = driver;
