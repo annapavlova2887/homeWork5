@@ -17,7 +17,7 @@ public class MainPage extends AbsBasePage{
     private String locatorOfConfirmPassword = "confirm_password";
     private String locatorOfBirthday = "birthdate";
     private String locatorOfLanguageLevel = "language_level";
-    private String locatorOfChooseLanguage = "//*[@id=\"language_level\"]/option[1]";
+    private String locatorOfChooseLanguage = "[value=\"beginner\"]";
     private String locatorOfRegButt = "[type = 'submit']";
     private String locatorOfOutForm = "output";
 
@@ -28,7 +28,7 @@ public class MainPage extends AbsBasePage{
     private String manthOfBirth = "03";
     private String yearOfBirth = "2012";
     private String dataForBirth = dateOfBirth+manthOfBirth+yearOfBirth;
-    private String dateForLanguageLev = "beginner";
+    private String dateForLanguageLev = "intermediate";
 
     public void fillName() {
         WebElement name = getElement(By.id(locatorOfName));
@@ -56,12 +56,10 @@ public class MainPage extends AbsBasePage{
     }
 
     public void fillLanguageLevel() {
-        WebElement chooseLanguage = getElement(By.xpath(locatorOfChooseLanguage));
+        WebElement chooseLanguage = getElement(By.cssSelector(locatorOfChooseLanguage));
         WebElement languageLevel = getElement(By.id(locatorOfLanguageLevel));
         dropdownSelect(chooseLanguage, languageLevel, dateForLanguageLev);
     }
-
-
 
     public void passShouldBeSame() {
         WebElement password = getElement(By.id(locatorOfPassword));
