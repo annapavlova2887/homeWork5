@@ -1,5 +1,6 @@
 package manePage;
 
+import data.Fields;
 import factory.WebDriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
@@ -36,10 +37,10 @@ public class MainPageTests {
      public void OutPutTest() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
-        mainPage.fillName();
-        mainPage.fillEmail();
-        mainPage.fillPassword();
-        mainPage.fillConfirmPassword();
+        mainPage.fillFieldEnam(Fields.NAME);
+        mainPage.fillFieldEnam(Fields.EMAIL);
+        mainPage.fillFieldEnam(Fields.PASSWORD);
+        mainPage.fillFieldEnam(Fields.PASSWORD2);
         mainPage.passShouldBeSame();
         mainPage.fillBirthDate();
         mainPage.fillLanguageLevel();

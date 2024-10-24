@@ -1,7 +1,7 @@
 package pages;
 
 import common.AbsCommon;
-import org.junit.jupiter.api.Assertions;
+import data.LanguageLev;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,11 +30,9 @@ public abstract class AbsBasePage extends AbsCommon {
         return this;
     }
 
-    public AbsBasePage dropdownSelect(WebElement chooseLanguage, WebElement dropDown, String selectVal) {
-        //Assertions.assertFalse(chooseLanguage.isDisplayed());
+    public AbsBasePage dropdownSelect(WebElement dropDown, LanguageLev selectVol) {
         Select select = new Select(dropDown);
-        select.selectByValue(selectVal);
-        //Assertions.assertFalse(chooseLanguage.isDisplayed());
+        select.selectByValue(selectVol.getData());
         return this;
     }
 

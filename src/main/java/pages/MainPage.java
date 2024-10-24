@@ -1,5 +1,8 @@
 package pages;
 
+import common.AbsCommon;
+import data.Fields;
+import data.LanguageLev;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,55 +13,33 @@ public class MainPage extends AbsBasePage{
     public MainPage(WebDriver driver) {
         super(driver);
     }
-
-    private String locatorOfName = "username";
-    private String locatorOfEmail = "email";
+    private String locatorOfBirthDate = "#birthdate";
     private String locatorOfPassword = "password";
     private String locatorOfConfirmPassword = "confirm_password";
-    private String locatorOfBirthday = "birthdate";
     private String locatorOfLanguageLevel = "language_level";
-    private String locatorOfChooseLanguage = "[value=\"beginner\"]";
     private String locatorOfRegButt = "[type = 'submit']";
     private String locatorOfOutForm = "output";
 
-    private String dataForName = "Anna";
-    private String dataForEmail = "anna97@mail.ru";
-    private String dataForPassword = "08032012";
     private String dateOfBirth = "08";
     private String manthOfBirth = "03";
     private String yearOfBirth = "2012";
     private String dataForBirth = dateOfBirth+manthOfBirth+yearOfBirth;
-    private String dateForLanguageLev = "intermediate";
 
-    public void fillName() {
-        WebElement name = getElement(By.id(locatorOfName));
-        fillField(name, dataForName);
-    }
 
-    public void fillEmail() {
-        WebElement email = getElement(By.id(locatorOfEmail));
-        fillField(email, dataForEmail);
-    }
-
-    public void fillPassword() {
-        WebElement password = getElement(By.id(locatorOfPassword));
-        fillField(password, dataForPassword);
-    }
-
-    public void fillConfirmPassword() {
-        WebElement confirmPassword = getElement(By.id(locatorOfConfirmPassword));
-        fillField(confirmPassword, dataForPassword);
+    public void fillFieldEnam(Fields field) {
+        WebElement element = getElement(By.cssSelector(field.getLocator()));
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
+        fillField(element, field.getDate());
     }
 
     public void fillBirthDate() {
-        WebElement birthDate = getElement(By.id(locatorOfBirthday));
-        fillField(birthDate, dataForBirth);
+        WebElement dateOfBirth = getElement(By.cssSelector(locatorOfBirthDate));
+        fillField(dateOfBirth, dataForBirth);
     }
 
     public void fillLanguageLevel() {
-        WebElement chooseLanguage = getElement(By.cssSelector(locatorOfChooseLanguage));
         WebElement languageLevel = getElement(By.id(locatorOfLanguageLevel));
-        dropdownSelect(chooseLanguage, languageLevel, dateForLanguageLev);
+        dropdownSelect(languageLevel, LanguageLev.BEGINNER);
     }
 
     public void passShouldBeSame() {
@@ -76,10 +57,10 @@ public class MainPage extends AbsBasePage{
     public void outputText() {
         WebElement outputText = getElement(By.id(locatorOfOutForm));
         webDriverWait.until(ExpectedConditions.visibilityOf(outputText));
-        Assertions.assertEquals("Имя пользователя: " + dataForName +
-                "\nЭлектронная почта: " + dataForEmail +
+        Assertions.assertEquals("Имя пользователя: " + Fields.NAME.getDate() +
+                "\nЭлектронная почта: " + Fields.EMAIL.getDate() +
                 "\nДата рождения: " + yearOfBirth + "-" + manthOfBirth + "-" + dateOfBirth +
-                "\nУровень языка: " + dateForLanguageLev, outputText.getText());
+                "\nУровень языка: " + LanguageLev.BEGINNER.getData(), outputText.getText());
         logger.info("Текст формы соответсвует ожидаемому результату");
     }
 }
