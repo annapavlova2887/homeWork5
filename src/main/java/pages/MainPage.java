@@ -14,8 +14,6 @@ public class MainPage extends AbsBasePage{
         super(driver);
     }
     private String locatorOfBirthDate = "#birthdate";
-    private String locatorOfPassword = "password";
-    private String locatorOfConfirmPassword = "confirm_password";
     private String locatorOfLanguageLevel = "language_level";
     private String locatorOfRegButt = "[type = 'submit']";
     private String locatorOfOutForm = "output";
@@ -43,8 +41,8 @@ public class MainPage extends AbsBasePage{
     }
 
     public void passShouldBeSame() {
-        WebElement password = getElement(By.id(locatorOfPassword));
-        WebElement confirmPassword = getElement(By.id(locatorOfConfirmPassword));
+        WebElement password = getElement(By.cssSelector(Fields.PASSWORD.getLocator()));
+        WebElement confirmPassword = getElement(By.cssSelector(Fields.PASSWORD2.getLocator()));
         Assertions.assertEquals(password.getText(), confirmPassword.getText());
         logger.info("Введенные пароли совпадают");
     }
