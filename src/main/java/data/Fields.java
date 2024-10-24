@@ -17,7 +17,7 @@ public enum Fields {
     public String getLocator() {
         return locator;
     }
-    public String getDate() {
+    public String getData() {
         return data;
     }
 }

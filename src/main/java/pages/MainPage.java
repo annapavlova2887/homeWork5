@@ -27,7 +27,7 @@ public class MainPage extends AbsBasePage{
     public void fillFieldEnam(Fields field) {
         WebElement element = getElement(By.cssSelector(field.getLocator()));
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
-        fillField(element, field.getDate());
+        fillField(element, field.getData());
     }
 
     public void fillBirthDate() {
@@ -55,8 +55,8 @@ public class MainPage extends AbsBasePage{
     public void outputText() {
         WebElement outputText = getElement(By.id(locatorOfOutForm));
         webDriverWait.until(ExpectedConditions.visibilityOf(outputText));
-        Assertions.assertEquals("Имя пользователя: " + Fields.NAME.getDate() +
-                "\nЭлектронная почта: " + Fields.EMAIL.getDate() +
+        Assertions.assertEquals("Имя пользователя: " + Fields.NAME.getData() +
+                "\nЭлектронная почта: " + Fields.EMAIL.getData() +
                 "\nДата рождения: " + yearOfBirth + "-" + manthOfBirth + "-" + dateOfBirth +
                 "\nУровень языка: " + LanguageLev.BEGINNER.getData(), outputText.getText());
         logger.info("Текст формы соответсвует ожидаемому результату");
